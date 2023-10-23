@@ -52,20 +52,23 @@
         </form>
         <br />
         <h1 id="city">Brooklyn</h1>
-        <div class="details">
-          <div class="row">
-            <div class="col-9" id="date">Friday, 9/22</div>
-            <div class="col" id="precipitation">Precipitation: 0%</div>
+        <div class="row">
+          <div class="col">
+            <ul>
+              <li id="date">Friday, 9/22</li>
+              <li id="time">4:00</li>
+              <li id="description">Partly cloudy</li>
+            </ul>
           </div>
-          <div class="row">
-            <span class="col-9" id="time">4:00</span>
-            <span class="col" id="humidity">Humidity:55%</span>
-          </div>
-          <div class="row">
-            <div class="col-9" id="description">Partly cloudy</div>
-            <div class="col" id="wind">Wind: 15 mph</div>
+          <div class="col-4">
+            <ul>
+              <li>Precipitation: <span id="precipitation"></span>%</li>
+              <li>Humidity: <span id="humidity"></span>%</li>
+              <li>Wind: <span id="wind"></span> mph</li>
+            </ul>
           </div>
         </div>
+
         <h2>
           <img
             src="images/party cloudy-icon.png"
