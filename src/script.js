@@ -33,7 +33,7 @@ time.innerHTML = `${hours}:${minutes}`;
 
 function showCurrentWeather(response) {
   document.querySelector("#city").innerHTML = response.data.name;
-  document.querySelector(".temperature").innerHTML = Math.round(
+  document.querySelector(".weather-temperature").innerHTML = Math.round(
     response.data.main.temp
   );
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;

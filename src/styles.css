@@ -37,16 +37,17 @@ a {
 
 .weather-icon {
   width: 100px;
+  height: 100px;
 }
-.temperature {
-  font-size: 60px;
+.weather-temperature {
+  font-size: 64px;
   font-weight: 400;
   line-height: 1;
 }
 .units {
   position: relative;
-  top: -24px;
-  font-size: 20px;
+  font-size: 16px;
+  top: -32px;
 }
 
 .weather-forecast {
