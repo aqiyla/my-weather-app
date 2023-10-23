@@ -12,19 +12,29 @@ h2 {
 }
 ul {
   list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+a {
+  cursor: pointer;
+  text-decoration: none;
+  background-color: transparent;
+}
+.weather-app-wrapper {
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.weather-app {
+  border: 1px solid #dadde1;
+  padding: 15px;
+  border-radius: 10px;
 }
 
 .row {
   font-size: 14px;
 }
 
-.weather-app {
-  border: 1px solid #dadde1;
-  padding: 15px;
-  margin: 20px auto;
-  border-radius: 10px;
-  max-width: 600px;
-}
 .weather-icon {
   width: 100px;
 }
@@ -50,9 +60,4 @@ ul {
 }
 .footer {
   text-align: center;
-}
-a {
-  cursor: pointer;
-  text-decoration: none;
-  background-color: transparent;
 }
