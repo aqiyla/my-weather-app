@@ -43,6 +43,10 @@ function showCurrentWeather(response) {
   );
   document.querySelector("#description").innerHTML =
     response.data.condition.description;
+
+  document
+    .querySelector("#weather-icon")
+    .setAttribute("src", `${response.data.condition.icon_url}`);
 }
 
 function searchCity(city) {
