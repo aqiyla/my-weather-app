@@ -50,8 +50,8 @@ function showCurrentWeather(response) {
 }
 
 function searchCity(city) {
-  let apiKey = "77cc6e139312be6o1cb19t94fd0aeff4a";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query={city}&key={apiKey}&units=imperial`;
+  let apiKey = "fbef01f4et1b02o0d25c27210a43ef3f";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(showCurrentWeather);
 }
 
@@ -62,10 +62,10 @@ function handleSubmit(event) {
 }
 
 function searchLocation(position) {
-  let apiKey = "7cc6e139312be6o1cb19t94fd0aeff4a";
+  let apiKey = "fbef01f4et1b02o0d25c27210a43ef3f";
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon={lon}&lat={lat}&key={apiKey}&units=imperial`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}&units=imperial`;
 
   axios.get(apiUrl).then(showCurrentWeather);
 }
