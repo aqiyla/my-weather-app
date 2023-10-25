@@ -7,14 +7,24 @@ h1 {
   font-weight: 100;
   line-height: 28px;
 }
+
 h2 {
   text-align: center;
 }
+
 ul {
-  list-style-type: none;
   margin: 0;
   padding: 0;
 }
+
+li {
+  list-style-type: none;
+}
+
+li:first-letter {
+  text-transform: capitalize;
+}
+
 a {
   cursor: pointer;
   text-decoration: none;
@@ -36,7 +46,7 @@ a {
 }
 
 .weather-icon {
-  width: 100px;
+  width: 200px;
   height: 100px;
 }
 .weather-temperature {

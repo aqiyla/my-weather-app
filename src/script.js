@@ -32,26 +32,34 @@ today.innerHTML = `${day}, ${month}/${date}`;
 time.innerHTML = `${hours}:${minutes}`;
 
 function showCurrentWeather(response) {
-  document.querySelector("#city").innerHTML = response.data.city;
+  document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector(".weather-temperature").innerHTML = Math.round(
-    response.data.temperature.current
+    response.data.main.temp
   );
-  document.querySelector("#humidity").innerHTML =
-    response.data.temperature.humidity;
+  document.querySelector("#highTemp").innerHTML = Math.round(
+    response.data.main.temp_max
+  );
+  document.querySelector("#lowTemp").innerHTML = Math.round(
+    response.data.main.temp_min
+  );
+  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
   document.querySelector("#description").innerHTML =
-    response.data.condition.description;
+    response.data.weather[0].main;
 
   document
     .querySelector("#weather-icon")
-    .setAttribute("src", `${response.data.condition.icon_url}`);
+    .setAttribute(
+      "src",
+      `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
 }
 
 function searchCity(city) {
-  let apiKey = "fbef01f4et1b02o0d25c27210a43ef3f";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`;
+  let apiKey = "d6f9dadcae5b23739cf8b87d6354e55f";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(showCurrentWeather);
 }
 
@@ -62,10 +70,10 @@ function handleSubmit(event) {
 }
 
 function searchLocation(position) {
-  let apiKey = "fbef01f4et1b02o0d25c27210a43ef3f";
+  let apiKey = "d6f9dadcae5b23739cf8b87d6354e55f";
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}&units=imperial`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`;
 
   axios.get(apiUrl).then(showCurrentWeather);
 }

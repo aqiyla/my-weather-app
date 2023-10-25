@@ -61,9 +61,14 @@
                 <li id="description">Partly cloudy</li>
               </ul>
             </div>
-            <div class="col-3">
+            <div class="col-4">
               <ul>
-                <li>Precipitation: <span id="precipitation"></span>%</li>
+                <li>
+                  <div class="todays-high-low">
+                    High: <span id="highTemp"></span>°F | Low:
+                    <span id="lowTemp"></span>°F
+                  </div>
+                </li>
                 <li>Humidity: <span id="humidity"></span>%</li>
                 <li>Wind: <span id="wind"></span> mph</li>
               </ul>
@@ -72,11 +77,10 @@
           <div>
             <h2>
               <img
-                src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${forecastDay.condition.icon}.png"
-                alt="Cloudy"
+                src="https://openweathermap.org/img/wn/10d@2x.png"
+                alt="Clear"
                 class="current-weather"
                 id="weather-icon"
-                width="100"
               />
               <span class="weather-temperature"><strong>71</strong></span>
               <span class="units">
