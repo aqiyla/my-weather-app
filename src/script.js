@@ -96,7 +96,7 @@ function displayCelsiusTemperature(event) {
 
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
-  celsiusLink.class.remove("active");
+  celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
   let temperatureElement = document.querySelector(".weather-temperature");
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
