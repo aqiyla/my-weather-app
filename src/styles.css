@@ -71,11 +71,25 @@ a {
 }
 
 .weather-forecast {
+  margin-top: 20px;
   text-align: center;
+  color: #000;
 }
-.degrees {
+
+.weather-forecast-day {
+  font-size: 16px;
+}
+
+.weather-forecast-temperature-min {
+  opacity: 0.5;
+}
+.weather-forecast-temperatures {
   font-size: 14px;
 }
 .search-form {
   margin-bottom: 20px;
+}
+
+.footer {
+  text-align: center;
 }
