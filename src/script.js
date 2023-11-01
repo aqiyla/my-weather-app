@@ -58,7 +58,7 @@ function showCurrentWeather(response) {
       `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
 
-  getForecast(response.data.city);
+  getForecast(response.data.coord);
 }
 
 function searchCity(city) {
@@ -106,7 +106,7 @@ function displayFahrenheitTemperature(event) {
 
 let fahrenheitTemperature = null;
 
-function getForecast(city) {
+function getForecast(coordinates) {
   let apiKey = "d6f9dadcae5b23739cf8b87d6354e55f";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
   axios(apiUrl).then(displayForecast);
