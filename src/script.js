@@ -106,31 +106,44 @@ function displayFahrenheitTemperature(event) {
 
 let fahrenheitTemperature = null;
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[date.getDay()];
+}
+
 function getForecast(coordinates) {
-  let apiKey = "d6f9dadcae5b23739cf8b87d6354e55f";
+  let apiKey = "2d96d64425dca1d6eda00d942a281c0d";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
   axios(apiUrl).then(displayForecast);
 }
 
 function displayForecast(response) {
-  let days = ["Wed", "Thu", "Fri", "Sat", "Sun"];
+  console.log(response.data);
+
   let forecastHtml = "";
 
-  days.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      `
+  response.data.daily.forEach(function (day, index) {
+    if (index < 5) {
+      forecastHtml =
+        forecastHtml +
+        `
       <div class="weather-forecast-day">
-        <div class="weather-forecast-date">${day}</div>
-        <div class="weather-forecast-icon">🌤️</div>
+        <div class="weather-forecast-date">${formatDay(day.dt)}</div>
+
+          <img src="${day.weather.icon}" class="weather-forecast-icon" />
         <div class="weather-forecast-temperatures">
           <div class="weather-forecast-temperature">
-            <strong>43º</strong>
+            <strong>${Math.round(day.temp.max)}°</strong>
           </div>
-          <div class="weather-forecast-temperature">39º</div>
+          <div class="weather-forecast-temperature">${Math.round(
+            day.temp.min
+          )}°</div>
         </div>
       </div>
     `;
+    }
   });
 
   let forecastElement = document.querySelector("#forecast");
@@ -150,4 +163,3 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 searchCity("New York");
-displayForecast();
