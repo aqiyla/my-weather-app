@@ -101,10 +101,18 @@ a {
   padding: 0 10px;
 }
 
+.weather-app-details strong {
+  color: #077940;
+}
+
 .search-form {
   margin-bottom: 20px;
 }
 
-.footer {
+footer {
+  border-top: 1px solid #f9f7fe;
+  padding: 30px 0 0 0;
   text-align: center;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.6);
 }

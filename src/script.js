@@ -38,11 +38,8 @@ function showCurrentWeather(response) {
   document.querySelector(".weather-temperature").innerHTML = Math.round(
     response.data.main.temp
   );
-  document.querySelector("#highTemp").innerHTML = Math.round(
-    response.data.main.temp_max
-  );
-  document.querySelector("#lowTemp").innerHTML = Math.round(
-    response.data.main.temp_min
+  document.querySelector("#feelsLike").innerHTML = Math.round(
+    response.data.main.feels_like
   );
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
