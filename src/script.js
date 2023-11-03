@@ -32,38 +32,36 @@ today.innerHTML = `${day}, ${month}/${date}`;
 time.innerHTML = `${hours}:${minutes}`;
 
 function showCurrentWeather(response) {
-  fahrenheitTemperature = response.data.main.temp;
+  fahrenheitTemperature = response.data.temperature.current;
 
-  document.querySelector("#city").innerHTML = response.data.name;
+  document.querySelector("#city").innerHTML = response.data.city;
   document.querySelector(".weather-temperature").innerHTML = Math.round(
-    response.data.main.temp
+    response.data.temperature.current
   );
 
   let feelsLikeElement = document.querySelector("#feelsLike");
-  feelsLikeElement.innerHTML = `${Math.round(response.data.main.feels_like)}°F`;
+  feelsLikeElement.innerHTML = `${Math.round(
+    response.data.temperature.feels_like
+  )}°F`;
 
   let humidityElement = document.querySelector("#humidity");
-  humidityElement.innerHTML = `${response.data.main.humidity}%`;
+  humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
 
   let windElement = document.querySelector("#wind");
   windElement.innerHTML = `${Math.round(response.data.wind.speed)} mph`;
 
   document.querySelector("#description").innerHTML =
-    response.data.weather[0].main;
+    response.data.condition.description;
 
-  document
-    .querySelector("#weather-icon")
-    .setAttribute(
-      "src",
-      `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-    );
+  let weatherIconElement = document.querySelector("#weather-icon");
+  weatherIconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-forecast-icon" />`;
 
-  getForecast(response.data.coord);
+  getForecast(response.data.city);
 }
 
 function searchCity(city) {
-  let apiKey = "d6f9dadcae5b23739cf8b87d6354e55f";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+  let apiKey = "7cc6e139312be6o1cb19t94fd0aeff4a";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(showCurrentWeather);
 }
 
@@ -74,10 +72,10 @@ function handleSubmit(event) {
 }
 
 function searchLocation(position) {
-  let apiKey = "d6f9dadcae5b23739cf8b87d6354e55f";
+  let apiKey = "7cc6e139312be6o1cb19t94fd0aeff4a";
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${lon}&lat=${lat}&units=imperial&key=${apiKey}`;
 
   axios.get(apiUrl).then(showCurrentWeather);
 }
@@ -113,9 +111,9 @@ function formatDay(timestamp) {
   return days[date.getDay()];
 }
 
-function getForecast(coordinates) {
-  let apiKey = "2d96d64425dca1d6eda00d942a281c0d";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
+function getForecast(city) {
+  let apiKey = "7cc6e139312be6o1cb19t94fd0aeff4a";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${city.lon}&lat=${city.lat}&key=${apiKey}&units=imperial`;
   axios(apiUrl).then(displayForecast);
 }
 
@@ -128,17 +126,15 @@ function displayForecast(response) {
         forecastHtml +
         `
       <div class="weather-forecast-day">
-        <div class="weather-forecast-date">${formatDay(day.dt)}</div>
+        <div class="weather-forecast-date">${formatDay(day.time)}</div>
 
-          <img src="https://openweathermap.org/img/wn/${
-            day.weather[0].icon
-          }@2x.png" class="weather-forecast-icon" />
+           <img src="${day.condition.icon_url}" class="weather-forecast-icon" />
         <div class="weather-forecast-temperatures">
           <div class="weather-forecast-temperature">
-            <strong>${Math.round(day.temp.max)}°</strong>
+            <strong>${Math.round(day.temperature.maximum)}°</strong>
           </div>
           <div class="weather-forecast-temperature">${Math.round(
-            day.temp.min
+            day.temperature.minimum
           )}°</div>
         </div>
       </div>
