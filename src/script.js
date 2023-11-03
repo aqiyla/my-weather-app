@@ -38,13 +38,16 @@ function showCurrentWeather(response) {
   document.querySelector(".weather-temperature").innerHTML = Math.round(
     response.data.main.temp
   );
-  document.querySelector("#feelsLike").innerHTML = Math.round(
-    response.data.main.feels_like
-  );
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
-  document.querySelector("#wind").innerHTML = Math.round(
-    response.data.wind.speed
-  );
+
+  let feelsLikeElement = document.querySelector("#feelsLike");
+  feelsLikeElement.innerHTML = `${Math.round(response.data.main.feels_like)}°F`;
+
+  let humidityElement = document.querySelector("#humidity");
+  humidityElement.innerHTML = `${response.data.main.humidity}%`;
+
+  let windElement = document.querySelector("#wind");
+  windElement.innerHTML = `${Math.round(response.data.wind.speed)} mph`;
+
   document.querySelector("#description").innerHTML =
     response.data.weather[0].main;
 
