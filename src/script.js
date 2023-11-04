@@ -75,7 +75,7 @@ function searchLocation(position) {
   let apiKey = "7cc6e139312be6o1cb19t94fd0aeff4a";
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${lon}&lat=${lat}&units=imperial&key=${apiKey}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&units=imperial&key=${apiKey}`;
 
   axios.get(apiUrl).then(showCurrentWeather);
 }
@@ -113,7 +113,7 @@ function formatDay(timestamp) {
 
 function getForecast(city) {
   let apiKey = "7cc6e139312be6o1cb19t94fd0aeff4a";
-  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}lon=${lon}&lat=${lat}&key=${apiKey}&units=imperial`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=imperial`;
   axios(apiUrl).then(displayForecast);
 }
 
