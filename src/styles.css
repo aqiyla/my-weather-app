@@ -62,6 +62,12 @@ a {
 .weather-app-temperature-container {
   display: inline-block;
 }
+
+.weather-info {
+  display: inline-flex;
+  align-items: center;
+}
+
 .weather-icon {
   width: 88px;
   height: 88px;
@@ -75,7 +81,7 @@ a {
 .units {
   position: relative;
   font-size: 16px;
-  top: -32px;
+  top: -20px;
 }
 
 .active {
