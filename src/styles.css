@@ -35,13 +35,13 @@ a {
 }
 .weather-app-wrapper {
   max-width: 600px;
-  margin: 20px auto;
+  margin: 45px auto;
 }
 
 .weather-app {
   background: white;
   border: 1px solid #dadde1;
-  padding: 15px;
+  padding: 30px;
   border-radius: 10px;
 }
 
